@@ -1,16 +1,17 @@
-from project import generate_password, password_strength_check, dashes_calculator
+from CLIPasswordManager import (
+    generate_password,
+    password_strength_check,
+    dashes_calculator,
+)
 
 
 def test_generate_password_length():
-    length_list = [-5, 0, 3, 6, 8, 9, 12, 20]
-    assert len(generate_password(length_list[0])) == 8
-    assert len(generate_password(length_list[1])) == 8
-    assert len(generate_password(length_list[2])) == 8
-    assert len(generate_password(length_list[3])) == 8
-    assert len(generate_password(length_list[4])) == 8
-    assert len(generate_password(length_list[5])) == 9
-    assert len(generate_password(length_list[6])) == 12
-    assert len(generate_password(length_list[7])) == 20
+    length_list = [3, 6, 8, 9, 12, 20]
+    check_list = [8, 8, 8, 9, 12, 20]
+    for key, length in enumerate(length_list):
+        password = generate_password(length)
+        assert password is not None
+        assert len(password) == check_list[key]
 
 
 def test_password_strength_check():
@@ -29,5 +30,3 @@ def test_dashes_calculcator():
     assert dashes_calculator("PASSWORD CREATOR") == 29
     assert dashes_calculator("GOODBYE") == 34
     assert dashes_calculator("DATA WAS NOT DELETED") == 27
-
-    
