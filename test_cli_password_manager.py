@@ -1,4 +1,4 @@
-from CLIPasswordManager import (
+from cli_password_manager import (
     generate_password,
     password_strength_check,
     dashes_calculator,

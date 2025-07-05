@@ -1,16 +1,19 @@
+"""CLI Password Manager: Save all passwords in secure csv file, encrypted with salt. Allows for secure storage, password strength testing, password generation and many more features."""
+
 import base64
-from cryptography.fernet import Fernet, InvalidToken
-from cryptography.hazmat.primitives import hashes
-from cryptography.hazmat.primitives.kdf.pbkdf2 import PBKDF2HMAC
 import csv
-from datetime import datetime
 import io
 import os
 import string
 import sys
-from typing import Optional
 import random
 import re
+from cryptography.fernet import Fernet, InvalidToken
+from cryptography.hazmat.primitives import hashes
+from cryptography.hazmat.primitives.kdf.pbkdf2 import PBKDF2HMAC
+from datetime import datetime
+from typing import Optional
+
 
 # Global values for yes or 1 and no or 2 used throughout program
 acceptance = ["yes", "1", "y", "YES", "Yes", "yEs", "yeS", "YeS", "Y", "YEs"]
@@ -18,6 +21,8 @@ denied = ["no", "2", "n", "No", "nO", "N", "NO"]
 
 
 class PasswordManager:
+    """Creates an instance for user to create files and passwords, store passwords securly, encrypt and decrypt files and adding entries to database."""
+
     def __init__(self):
         """Assignment values for self to be used throughout method"""
         self.master_password: Optional[str] = None
